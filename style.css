@@ -1,5 +1,24 @@
-/* style.css හි වඩාත් නිර්මාණශීලී පැහැයක් සඳහා මෙම වෙනස්කම් සිදුකල හැක */
+/* style.css හි මුලින්ම ඇති :root කොටසට මෙය ආදේශ කරන්න */
 :root {
-    --accent: #ff4757; /* 3D Neural elements සහ links වඩාත් කැපී පෙනෙන රතු-රෝස පැහැයකට */
+    /* Dark theme (Default) */
+    --bg-primary: #000000;
+    --bg-secondary: #0b0c10;
+    --bg-card: rgba(15, 22, 36, 0.6);
+    --bg-card-hover: rgba(15, 22, 36, 0.85);
+    --bg-glass: rgba(15, 22, 36, 0.35);
+    --text-primary: #f5f6fa;
+    --text-secondary: #a0aec0;
+    --text-muted: #4a5568;
+    
+    /* Graphic Design වලට ගැලපෙන අලුත් Accent Color එක (Neon Crimson/Pink) */
+    --accent: #ff4757; 
+    --accent-dim: rgba(255, 71, 87, 0.1);
+    --accent-glow: rgba(255, 71, 87, 0.4);
+    --navy-glow: rgba(11, 12, 16, 0.8);
+    --border-color: rgba(255, 71, 87, 0.15);
+    --border-hover: rgba(255, 71, 87, 0.4);
+    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
     --gradient-accent: linear-gradient(135deg, #ff4757, #ff6b81);
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
