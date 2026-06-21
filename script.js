@@ -334,10 +334,9 @@
 
     function initTypingAnimation() {
         const phrases = [
-            'Python | Machine Learning | Data Analysis',
-            'Deep Learning | NLP | Computer Vision',
-            'Pandas | NumPy | Scikit-Learn',
-            'Building AI that matters.',
+            'Adobe Illustratior, Adobe Photoshop, Adobe Indesign and CorelDrow',
+            'Creatin Portfolio',
+            'Basic Knowladge of Graphic deisgn',
         ];
         const el = $('#typing-text');
         let phraseIdx = 0;
