@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 if(window.innerWidth > 768) {
     const cursor = document.querySelector('.cursor');
     const follower = document.querySelector('.cursor-follower');
-    const links = document.querySelectorAll('a, .theme-btn, input, textarea, button');
+    const links = document.querySelectorAll('a, .theme-btn, input, textarea');
 
     document.addEventListener('mousemove', (e) => {
         gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
@@ -21,7 +21,7 @@ if(window.innerWidth > 768) {
     });
 }
 
-// Hero Animations
+// Hero Animations (මුලින්ම Text එක මතු වන animation එක)
 gsap.from('.reveal-text', {
     y: 150,
     opacity: 0,
@@ -39,16 +39,16 @@ gsap.from('.fade-in', {
     stagger: 0.2
 });
 
-// Reveal Titles and Sections on Scroll
-const revealTitles = document.querySelectorAll('.reveal-title, .project-card, .timeline-item');
-revealTitles.forEach(title => {
-    gsap.from(title, {
+// Reveal Titles & Cards on Scroll (පහළට Scroll කරද්දී Elements මතු වීම)
+const revealElements = document.querySelectorAll('.reveal-title, .skill-card, .project-card, .timeline-item, .contact-form');
+revealElements.forEach(element => {
+    gsap.from(element, {
         scrollTrigger: {
-            trigger: title,
-            start: "top 90%",
+            trigger: element,
+            start: "top 90%", // Screen එකේ 90% කට ආවම සජීවීකරණය පටන් ගනී
             toggleActions: "play none none reverse"
         },
-        y: 50,
+        y: 60,
         opacity: 0,
         duration: 1,
         ease: "power3.out"
