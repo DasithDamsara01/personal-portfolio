@@ -26,7 +26,7 @@ a { color: var(--text-main); text-decoration: none; cursor: none; }
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Content එකට යටින් තියන්න */
+  z-index: 0; /* Background එකක් ලෙස තැබීමට */
   pointer-events: none; /* Mouse cursors වලට බාධාවක් නොවෙන්න */
 }
 
@@ -56,7 +56,7 @@ a { color: var(--text-main); text-decoration: none; cursor: none; }
   z-index: 10000; 
   transform: translate(-50%, -50%); 
   transition: width 0.3s, height 0.3s, background 0.3s; 
-  mix-blend-mode: difference;
+  mix-blend-mode: difference; 
 }
 
 .cursor-follower { 
@@ -70,17 +70,17 @@ a { color: var(--text-main); text-decoration: none; cursor: none; }
   z-index: 9999; 
   transform: translate(-50%, -50%); 
   transition: 0.1s, border-color 0.3s; 
-  mix-blend-mode: difference;
+  mix-blend-mode: difference; 
 }
 .cursor.active { width: 60px; height: 60px; mix-blend-mode: difference; background: white; }
 
 nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 60px; position: fixed; width: 100%; z-index: 100; mix-blend-mode: difference; }
 .logo { font-size: 1.2rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; color: white; }
 
-.container { max-width: 1400px; margin: 0 auto; padding: 0 60px; position: relative; z-index: 1; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 60px; position: relative; z-index: 2; }
 
 /* Hero */
-.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 1; }
+.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 2; }
 .hero-content { text-align: center; }
 .hero h1 { font-size: 8rem; line-height: 1.1; overflow: hidden; }
 .hero h1.italic { font-style: italic; color: var(--text-muted); }
@@ -88,7 +88,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .scroll-indicator { position: absolute; bottom: 50px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
 
 /* About */
-.about { padding: 150px 0; position: relative; z-index: 1; }
+.about { padding: 150px 0; position: relative; z-index: 2; }
 .about-flex { display: flex; justify-content: space-between; align-items: center; gap: 80px; }
 .about-text { flex: 1; }
 .about-text h2 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 40px; }
@@ -98,14 +98,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .about-image { flex: 1; height: 500px; width: 100%; background-size: cover; background-position: center; border-radius: 4px; overflow: hidden; }
 
 /* Skills Grid */
-.projects { padding: 100px 0 200px; position: relative; z-index: 1; }
+.projects { padding: 100px 0 200px; position: relative; z-index: 2; }
 .section-title { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; font-family: 'Inter', sans-serif; margin-bottom: 80px; border-bottom: 1px solid var(--text-muted); padding-bottom: 20px; }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 .skill-card { background: var(--card-bg); padding: 40px; border-radius: 8px; font-size: 1.5rem; font-family: 'Playfair Display', serif; text-align: center; transition: 0.3s; }
 .skill-card:hover { transform: translateY(-10px); background: var(--text-main); color: var(--bg-color); }
 
 /* Footer */
-footer { padding: 150px 0 50px; border-top: 1px solid var(--accent); position: relative; z-index: 1; }
+footer { padding: 150px 0 50px; border-top: 1px solid var(--accent); position: relative; z-index: 2; }
 footer h2 { font-size: 5.5rem; max-width: 900px; line-height: 1.1; }
 .email-link { font-size: 2.5rem; color: var(--text-main); border-bottom: 1px solid var(--text-main); padding-bottom: 10px; width: fit-content; transition: 0.3s; display: block; margin-top: 30px; }
 .email-link:hover { opacity: 0.7; }
