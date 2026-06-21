@@ -1,51 +1,160 @@
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+(() => {
+    'use strict';
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-};
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => [...document.querySelectorAll(sel)];
 
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+    // ── 1. BACKGROUND EFFECT (THREE.JS) ──
+    class NeuralBackground {
+        constructor() {
+            this.canvas = $('#three-canvas');
+            if (!this.canvas) return;
+            this.scene = new THREE.Scene();
+            this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: true });
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.camera.position.z = 30;
 
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+            this.initParticles();
+            window.addEventListener('resize', () => this.onWindowResize());
+            this.animate();
+        }
 
-        if(top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+        initParticles() {
+            const count = 70;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(count * 3);
+
+            for (let i = 0; i < count * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 50;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({
+                color: document.body.getAttribute('data-theme') === 'light' ? 0x6d28d9 : 0x7c3aed,
+                size: 0.4,
+                transparent: true,
+                opacity: 0.6
             });
-        };
-    });
 
-    let header = document.querySelector('.header');
-    header.classList.toggle('sticky', window.scrollY > 100);
+            this.points = new THREE.Points(geometry, material);
+            this.scene.add(this.points);
+        }
 
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
-};
+        onWindowResize() {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        }
 
-let darkModeIcon = document.querySelector('#darkMode-icon');
+        animate() {
+            requestAnimationFrame(() => this.animate());
+            if (this.points) {
+                this.points.rotation.y += 0.001;
+                this.points.rotation.x += 0.0005;
+            }
+            this.renderer.render(this.scene, this.camera);
+        }
+    }
 
-darkModeIcon.onclick = () => {
-    darkModeIcon.classList.toggle('bx-sun');
-    document.body.classList.toggle('dark-mode');
-};
+    // ── 2. CURSOR FOLLOW GLOW ──
+    function initCursorGlow() {
+        const glow = $('#cursor-glow');
+        if (!glow) return;
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(glow, { left: e.clientX, top: e.clientY, duration: 0.5, ease: 'power2.out' });
+        });
+    }
 
-ScrollReveal({ 
-    reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200
-});
+    // ── 3. TYPING EFFECT ──
+    function initTypingAnimation() {
+        const el = $('#typing-text');
+        if (!el) return;
+        const words = ["Graphic Designer", "Illustrator", "Branding Expert"];
+        let wordIdx = 0, charIdx = 0, isDeleting = false;
 
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('.services-container, .portfolio-box, .contact form', { origin: 'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
-ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+        function type() {
+            const current = words[wordIdx];
+            if (isDeleting) {
+                el.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                el.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIdx === current.length) {
+                typeSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        type();
+    }
+
+    // ── 4. NAVBAR STICKY & HAMBURGER ──
+    function initNavbar() {
+        const nav = $('#navbar');
+        const burger = $('.nav-hamburger');
+        const links = $('.nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('sticky');
+            else nav.classList.remove('sticky');
+        });
+
+        if (burger) {
+            burger.addEventListener('click', () => {
+                links.classList.toggle('active');
+                burger.classList.toggle('toggle');
+            });
+        }
+    }
+
+    // ── 5. LIGHT / DARK THEME TOGGLE ──
+    function initTheme() {
+        const btn = $('#theme-toggle');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            btn.innerHTML = newTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+    }
+
+    // ── 6. COUNTERS ANIMATION ──
+    function initCounters() {
+        const stats = $$('.stat-num');
+        stats.forEach(stat => {
+            const target = +stat.getAttribute('data-target');
+            gsap.fromTo(stat, { textContent: 0 }, {
+                textContent: target,
+                duration: 2,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: stat, start: 'top 90%' },
+                snap: { textContent: 1 }
+            });
+        });
+    }
+
+    // ── BOOT ──
+    function boot() {
+        new NeuralBackground();
+        initCursorGlow();
+        initTypingAnimation();
+        initNavbar();
+        initTheme();
+        initCounters();
+    }
+
+    document.addEventListener('DOMContentLoaded', boot);
+})();
