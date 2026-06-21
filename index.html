@@ -1,174 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasith - Portfolio</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="description" content="Dasith Damsara — Graphic Designer Portfolio. Explore my creative designs, vector graphics, and layouts.">
+    <title>Dasith Damsara | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <header class="header">
-        <a href="#" class="logo">Dasith.</a>
+    <div id=\"cursor-glow\" class="cursor-glow"></div>
 
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <canvas id="three-canvas"></canvas>
 
-        <div class="bx bx-moon" id="darkMode-icon"></div>
-        <div class="bx bx-menu" id="menu-icon"></div>
-     </header>
-
-     <section class="home" id="home">
-        <div class="home-content">
-            <h3>Hello, I am</h3>
-            <h1>Dasith</h1>
-            <p>A professional Graphic Designer and UI/UX Designer holding an NVQ Level 4 qualification. I specialize in crafting impactful visual identities, user-centric interfaces, and innovative digital designs.</p>
-            
-            <div class="social-media">
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="https://wa.me/94701258673" target="_blank"><i class='bx bxl-whatsapp'></i></a>
-                <a href="mailto:sudeeranimsara2005@gmail.com"><i class='bx bx-envelope'></i></a>
-                <a href="tel:+94701258673"><i class='bx bx-phone'></i></a>
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>DASITH<span class="logo-bracket\">/&gt;</span>
+            </a>
+            <button class="nav-hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
             </div>
-
-            <a href="#contact" class="btn">Hire Me</a>
         </div>
+    </nav>
 
-        <div class="profession-container">
-            <div class="profession-box">
-                <div class="profession" style="--i:0;">
-                    <i class='bx bx-palette'></i>
-                    <h3>Graphic Designer</h3>
+    <main class="main-content">
+        <section id="hero" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="hero-greeting-box">
+                        <span class="hero-greeting">Creative Visual Artist</span>
+                    </div>
+                    <h1 class="hero-name">Dasith Damsara<span class="accent-dot">.</span></h1>
+                    <div class="type-container">
+                        <span id="typing-text" class="typing-text"></span>
+                        <span class="cursor-blink">|</span>
+                    </div>
+                    <p class="hero-lead">Bringing creative visions to life through design. Qualified Graphic Designer & Illustrator based in Sri Lanka.</p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary">
+                            <span>Get In Touch</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="profession" style="--i:1;">
-                    <i class='bx bx-laptop'></i>
-                    <h3>UI/UX Designer</h3>
+                <div class="hero-3d">
+                    <div class="tech-card-3d">
+                        <div class="tech-icon"><i class="fas fa-palette"></i></div>
+                        <h3>NVQ Level 4</h3>
+                        <p>Certified Professional Graphic Designer</p>
+                    </div>
                 </div>
-                <div class="profession" style="--i:2;">
-                    <i class='bx bx-vector'></i>
-                    <h3>Vector Artist</h3>
-                </div>
-                <div class="profession" style="--i:3;">
-                    <i class='bx bx-images'></i>
-                    <h3>Logo Designer</h3>
-                </div>
-
-                <div class="circle"></div>
             </div>
-            <div class="overlay"></div>
-        </div>
-
-        <div class="home-img">
-            <img src="img/home.png" alt="Dasith">
-        </div>
-      </section>
-
-      <section class="about" id="about">
-            <div class="about-img">
-                <img src="img/about.png" alt="About Dasith">
+            <div class="hero-stats container">
+                <div class="stat-item"><span class="stat-num" data-target="100">0</span><span class="stat-plus">%</span><span class="stat-label">Creativity</span></div>
+                <div class="stat-item"><span class="stat-num" data-target="4">0</span><span class="stat-label">NVQ Level</span></div>
+                <div class="stat-item"><span class="stat-num" data-target="6">0</span><span class="stat-plus">+</span><span class="stat-label">Core Skills</span></div>
             </div>
-
-            <div class="about-content">
-                <h2 class="heading">About <span>Me</span></h2>
-                <h3>Professional Graphic & UI/UX Designer</h3>
-                <p>I am Dasith, an NVQ Level 4 certified Graphic Designer. My expertise spans across creative branding, vector art, photo editing, and modern UI/UX workflows. I bridge the gap between aesthetics and functionality to create designs that truly connect with audiences.</p>
-                <a href="#" class="btn">Read More</a>
+            <div class="scroll-indicator">
+                <div class="mouse-icon"><div class="wheel"></div></div>
+                <span>Scroll Down</span>
             </div>
-       </section>
+        </section>
 
-       <section class="services" id="services">
-            <h2 class="heading">My <span>Skills & Services</span></h2>
-
-            <div class="services-container">
-                <div class="services-box">
-                    <i class='bx bx-palette'></i>
-                    <h3>Graphic Design</h3>
-                    <p>Expert logo creation, flyer layouts, brochures, and comprehensive social media branding kits.</p>
-                    <a href="#" class="btn">Read More</a>
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">01. Biography</span>
+                    <h2 class="section-title">About Me</h2>
                 </div>
-
-                <div class="services-box">
-                    <i class='bx bx-navigation'></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Designing modern, responsive, and user-friendly interfaces for web and mobile applications.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-
-                <div class="services-box">
-                    <i class='bx bx-vector'></i>
-                    <h3>Vector Illustration</h3>
-                    <p>High-quality digital portrait tracing, custom vector artwork, and minimalist icons.</p>
-                    <a href="#" class="btn">Read More</a>
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <p class="about-para">I am a passionate Graphic Designer qualified with NVQ Level 4 certification. I specialize in turning complex ideas into clean, professional, and visually stunning artwork. My focus is on creating meaningful branding and digital designs that leave a lasting impression.</p>
+                        <div class="about-cards-grid">
+                            <div class="about-subcard">
+                                <i class="fas fa-feather-alt"></i>
+                                <h4>Illustration</h4>
+                                <p>Custom drawings and vector graphics from concepts.</p>
+                            </div>
+                            <div class="about-subcard">
+                                <i class="fas fa-layer-group"></i>
+                                <h4>Layout Design</h4>
+                                <p>Structuring print and digital layouts perfectly.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio" id="portfolio">
-            <h2 class="heading">Latest <span>Projects</span></h2>
-
-            <div class="portfolio-container">
-                <div class="portfolio-box">
-                    <img src="img/portfolio1.jpg" alt="Project 1">
-                    <div class="portfolio-layer">
-                        <h4>Branding</h4>
-                        <p>Creative corporate identities and layouts.</p>
-                        <a href="#"><i class='bx bx-link-external'></i></a>
-                    </div>
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">02. Expertise</span>
+                    <h2 class="section-title">Skills & Capabilities</h2>
                 </div>
-
-                <div class="portfolio-box">
-                    <img src="img/portfolio2.jpg" alt="Project 2">
-                    <div class="portfolio-layer">
-                        <h4>UI Concept</h4>
-                        <p>Modern mobile application interface design.</p>
-                        <a href="#"><i class='bx bx-link-external'></i></a>
+                <div class="skills-layout">
+                    <div class="skills-bars-container">
+                        <div class="skill-bar-wrapper">
+                            <div class="skill-bar-info"><span>Graphic Design</span><span class="skill-val">95%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-bar-wrapper">
+                            <div class="skill-bar-info"><span>Vector Illustration</span><span class="skill-val">90%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-bar-wrapper">
+                            <div class="skill-bar-info"><span>Photo Editing & Photography</span><span class="skill-val">85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="portfolio-box">
-                    <img src="img/portfolio3.jpg" alt="Project 3">
-                    <div class="portfolio-layer">
-                        <h4>Vector Art</h4>
-                        <p>High-end vector tracing and digital artwork.</p>
-                        <a href="#"><i class='bx bx-link-external'></i></a>
+                    <div class="skills-grid">
+                        <div class="skill-card">Illustration</div>
+                        <div class="skill-card">Layout Design</div>
+                        <div class="skill-card">Color Theory</div>
+                        <div class="skill-card">Photography</div>
+                        <div class="skill-card">Vector Graphics</div>
+                        <div class="skill-card">Print Design</div>
                     </div>
                 </div>
             </div>
-         </section>
+        </section>
 
-         <section class="contact" id="contact">
-            <h2 class="heading">Contact <span>Me!</span></h2>
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">03. Collaboration</span>
+                    <h2 class="section-title">Let's Work Together</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info-side">
+                        <h3 class="contact-heading">Let's build something beautiful together.</h3>
+                        <p class="contact-text">I am currently open for freelance projects and full-time opportunities. Reach out if you want to collaborate!</p>
+                        <div class="contact-methods">
+                            <div class="contact-method-item">
+                                <i class="fas fa-envelope"></i>
+                                <div><h4>Email</h4><a href="mailto:dasithdamsara01@gmail.com">dasithdamsara01@gmail.com</a></div>
+                            </div>
+                            <div class="contact-method-item">
+                                <i class="fas fa-phone"></i>
+                                <div><h4>Phone</h4><p>074 269 4722 / 074 237 1117</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-side">
+                        <form id="contact-form" class="contact-form" action="#">
+                            <div class="form-row">
+                                <div class="form-group"><input type="text" id="form-name" required placeholder="Your Name"></div>
+                                <div class="form-group"><input type="email" id="form-email" required placeholder="Your Email"></div>
+                            </div>
+                            <div class="form-group"><input type="text" id="form-subject" required placeholder="Subject"></div>
+                            <div class="form-group"><textarea id="form-message" rows="5" required placeholder="Your Message"></textarea></div>
+                            <button type="submit" class="btn-primary" id="submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <form action="#">
-                <div class="input-box">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <a href="#hero" class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>DASITH<span class="logo-bracket">/&gt;</span>
+                </a>
+                <p class="footer-tagline">Designing clean, scaled layouts and vibrant visual arts.</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dasith Damsara. Crafted with creative vision.</p>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
                 </div>
-                <div class="input-box">
-                    <input type="number" placeholder="Mobile Number">
-                    <input type="text" placeholder="Email Subject">
-                </div>
-                <textarea cols="30" rows="10" placeholder="Your Message" required></textarea>
-                <input type="submit" value="Send Message" class="btn">
-            </form>
-          </section>
+            </div>
+        </div>
+    </footer>
 
-          <footer class="footer">
-                <div class="footer-text">
-                    <p>Copyright &copy; 2026 by Dasith | All Rights Reserved.</p>
-                </div>
-                <div class="footer-iconTop">
-                    <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-                </div>
-           </footer>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
