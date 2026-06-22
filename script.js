@@ -335,7 +335,7 @@
     function initTypingAnimation() {
         const phrases = [
             'Adobe Illustratior, Adobe Photoshop, Adobe Indesign and CorelDrow',
-            'Creatin Portfolio',
+            'Creatin Portfolio and Using Ai',
             'Basic Knowladge of Graphic deisgn',
         ];
         const el = $('#typing-text');
